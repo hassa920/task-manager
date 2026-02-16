@@ -6,9 +6,11 @@
   "author": "",
   "type": "module",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+ "scripts": {
+  "start": "node index.js",
+  "dev": "nodemon index.js"
+},
+
   "dependencies": {
     "ejs": "^4.0.1",
     "express": "^5.2.1",
