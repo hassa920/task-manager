@@ -1,0 +1,287 @@
+/* ================== Reset & Base Styles ================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 80px; /* Space for fixed navbar */
+}
+
+/* ================== Navbar Styles ================== */
+nav {
+    background-color: #4CAF50; /* Green */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: fixed; /* Keep navbar on top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.brand {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        margin-top: 10px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* ================== Form Styles (Add & Update Task) ================== */
+.form-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 50px;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Inputs, Textarea, Select */
+.form-container input[type="text"],
+.form-container textarea,
+.form-container select {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.form-container input[type="text"]:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Buttons */
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
+}
+
+/* ================== Responsive Adjustments ================== */
+@media (max-width: 500px) {
+    .form-container {
+        padding: 20px;
+    }
+}
+
+/* ================== List Page Styles ================== */
+.list-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    min-height: 100vh;
+    padding-top: 80px; /* Space for navbar */
+}
+
+/* Container */
+.list-page .container {
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+    padding: 0 20px;
+}
+
+/* Page Title */
+.list-page h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+    font-size: 2.2rem;
+}
+
+/* Empty Message */
+.list-page .empty-msg {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+}
+
+/* Task List Grid */
+.list-page .task-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Individual Task Card */
+.list-page .task-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 5px solid #4CAF50;
+}
+
+.list-page .task-card h2 {
+    color: #4CAF50;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.list-page .task-card p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Hover effect */
+.list-page .task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .list-page .task-card {
+        padding: 20px;
+    }
+
+    .list-page h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* ================== Delete Button Styles ================== */
+.list-page .list-delete-btn {
+    background-color: #af1212;   /* Green */
+    color: white;
+    border: none;
+    padding: 8px 16px;           /* same as Delete button */
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 0;               /* align with Delete button */
+    vertical-align: top;         /* top-align with Delete button */
+    text-decoration: none;       /* remove underline */
+    display: inline-flex;        /* behave like button */
+    align-items: center;         /* vertically center text */
+    justify-content: center;     /* horizontally center text */
+    height: 36px;                /* match Delete button height */
+    line-height: 1;              /* normalize line height */
+}
+
+
+.list-page .list-delete-btn:hover {
+    background-color: #c0392b;   /* Darker red on hover */
+    transform: scale(1.05);
+}
+
+/* ================== Update Button Styles ================== */
+.list-page .list-update-btn {
+    background-color: #27ae60;   /* Green */
+    color: white;
+    border: none;
+    padding: 8px 16px;           /* same as Delete button */
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 0;               /* align with Delete button */
+    vertical-align: top;         /* top-align with Delete button */
+    text-decoration: none;       /* remove underline */
+    display: inline-flex;        /* behave like button */
+    align-items: center;         /* vertically center text */
+    justify-content: center;     /* horizontally center text */
+    height: 36px;                /* match Delete button height */
+    line-height: 1;              /* normalize line height */
+}
+
+
+.list-page .list-update-btn:hover {
+    background-color: #1e8449;   /* Darker green on hover */
+    transform: scale(1.05);
+}
+
+/* ================== Buttons container ================== */
+.list-page .task-card .task-card-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;                  /
+}
+
+.task-item-list {
+    list-style-type: disc; /* bullet points */
+    padding-left: 20px;
+    margin: 0 0 10px 0;
+    color: #555;
+}
+
+.task-item-list li {
+    margin-bottom: 5px;
+}

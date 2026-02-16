@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet"  href="/styles.css"/>
+</head>
+<body>
+    <%- include('nav') %>
+    <div class="form-container">
+        <h2>Update Task</h2>
+        <form action="/update/<%= data._id %>" method="POST">
+            <label for="title">Task Title</label>
+            <input type="text" id="title" name="title" value="<%= data.title %>"  placeholder="Enter task title" required>
+
+            <label for="description">Description</label>
+<textarea id="description" name="description" placeholder="Enter task description" rows="4" required>
+<%= data.description %>
+</textarea>            
+
+            <button type="submit">UPDATE TASK</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="/styles.css"/>
+ 
+</head>
+<body>
+    <%- include('nav') %>
+
+    <div class="list-page">
+        <div class="container">
+            <h1>My Todo List</h1>
+
+            <div class="task-list">
+                <% if(data.length === 0) { %>
+                    <p class="empty-msg">No tasks found. Add some!</p>
+                <% } else { %>
+                    <% data.forEach(item => { %>
+                       <div class="task-card">
+  <ul class="task-item-list">
+    <li><strong>Title:</strong> <%= item.title %></li>
+    <li><strong>Description:</strong> <%= item.description %></li>
+</ul>
+
+
+    <div class="task-card-buttons">
+       
+        <form action="/delete/<%= item._id %>" method="POST" >
+            <button class="list-delete-btn">Delete</button>
+        </form>
+
+            <a href="/update/<%= item._id %>" class="list-update-btn">Update</a>
+
+    </div>
+</div>
+
+                    <% }) %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+<script>
+  // Add an extra state immediately
+  history.pushState(null, null, location.href);
+  history.pushState(null, null, location.href);
+
+  window.onpopstate = function () {
+    history.go(1);
+  };
+</script>
+
+</body>
+</html>
