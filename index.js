@@ -5,22 +5,15 @@ import listModel from "./model/todoModel.js";
 const port = process.env.port || 3000;
 
 
-// Try connecting to Localhost first
-const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/tododb";
+const mongoURI = process.env.MONGO_URI;
 
 if (!mongoURI) {
-  console.error("Error: MONGO_URI is not defined");
-  process.exit(1);
+  throw new Error("MONGO_URI is not defined in environment variables");
 }
 
 mongoose.connect(mongoURI)
-  .then(() => {
-    console.log("Database connected successfully");
-  })
-  .catch((err) => {
-    console.error("Database connection error:", err.message);
-  });
-
+  .then(() => console.log("Database connected successfully"))
+  .catch((err) => console.error("Database connection error:", err.message));
 const app = express();
 app.use(express.urlencoded({ extended: true }))
 const cssPath = path.resolve("public")
