@@ -4,15 +4,14 @@ import mongoose from "mongoose";
 import listModel from "./model/todoModel.js"
 
 
-const mongoURI = process.env.MONGO_URI;
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 10000 // 10 seconds
+})
+.then(() => console.log("Database connected successfully"))
+.catch(err => console.error("Database connection error:", err.message));
 
-if (!mongoURI) {
-  throw new Error("MONGO_URI is not defined in environment variables");
-}
-
-mongoose.connect(mongoURI)
-  .then(() => console.log("Database connected successfully"))
-  .catch((err) => console.error("Database connection error:", err.message));
 const app = express();
 app.use(express.urlencoded({ extended: true }))
 const cssPath = path.resolve("public")
