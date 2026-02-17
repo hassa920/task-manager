@@ -1,8 +1,7 @@
 import express from "express"
 import path from "node:path"
 import mongoose from "mongoose";
-import listModel from "../model/todoModel.js";
-const port = process.env.port || 3000;
+import listModel from "./model/todoModel.js"
 
 
 const mongoURI = process.env.MONGO_URI;
