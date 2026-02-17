@@ -8,21 +8,20 @@ const localURI = "mongodb://localhost:27017/tododb";
 const atlasURI = "mongodb+srv://admin:Mono12%40mongodb@cluster0.yfulohj.mongodb.net/tododb?appName=Cluster0";
 
 // Try connecting to Localhost first
-mongoose.connect(localURI)
-    .then(() => {
-        console.log("Connected to Localhost Database");
-    })
-    .catch(() => {
-        console.log("Localhost failed. Trying MongoDB Atlas...");
-        // If localhost fails, try Atlas
-        return mongoose.connect(atlasURI);
-    })
-    .then(() => {
-        console.log("Connected to MongoDB Atlas");
-    })
-    .catch((err) => {
-        console.error("Failed to connect to both databases:", err.message);
-    });
+const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/tododb";
+
+if (!mongoURI) {
+  console.error("Error: MONGO_URI is not defined");
+  process.exit(1);
+}
+
+mongoose.connect(mongoURI)
+  .then(() => {
+    console.log("Database connected successfully");
+  })
+  .catch((err) => {
+    console.error("Database connection error:", err.message);
+  });
 
 const app = express();
 app.use(express.urlencoded({ extended: true }))
