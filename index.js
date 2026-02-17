@@ -4,8 +4,6 @@ import mongoose from "mongoose";
 import listModel from "./model/todoModel.js";
 const port = process.env.port || 3000;
 
-const localURI = "mongodb://localhost:27017/tododb";
-const atlasURI = "mongodb+srv://admin:Mono12%40mongodb@cluster0.yfulohj.mongodb.net/tododb?appName=Cluster0";
 
 // Try connecting to Localhost first
 const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/tododb";
